@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lista HTML</title>
+    <style media="screen">
+        table, th, td {
+          border: 1px solid black;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Lista de pokemons {%if categoriaAtual%}| {{categoriaAtual}}{% endif %}</h1>
+    <table>
+      <th>Nome</th>
+      <th>Tipo</th>
+      <th>Level Inicial</th>
+      <th>Evolucao</th>
+      {% for pokemon in pokemons %}
+      <tr>
+        <td>{{pokemon.nome}}</td>
+        <td>{{pokemon.tipo}}</td>
+        <td>{{pokemon.level_inicial}}</td>
+        <td>
+          {% if pokemon.evolucao %}
+          {{pokemon.evolucao}}
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    <h2>Tipos</h2>
+    <ul>
+      {% for tipo in tipos %}
+        <li><a href="/tipos/{{ tipo.slug }}">{{tipo}}</a></li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
